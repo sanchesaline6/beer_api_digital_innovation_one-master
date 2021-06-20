@@ -37,6 +37,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+//Instrui que para rodar essa classe de teste ela estende da MockitoExtension
 @ExtendWith(MockitoExtension.class)
 public class BeerServiceTest {
 
@@ -45,10 +46,12 @@ public class BeerServiceTest {
     @Mock
     private BeerRepository beerRepository;
 
+    //interface que ajuda na conversão de um DTO para um modelo e vice-versa
     private BeerMapper beerMapper = BeerMapper.INSTANCE;
 
     @InjectMocks
     private BeerService beerService;
+
 
     @Test
     void whenBeerInformedThenItShouldBeCreated() throws BeerAlreadyRegisteredException {
@@ -63,9 +66,11 @@ public class BeerServiceTest {
         //then
         BeerDTO createdBeerDTO = beerService.createBeer(expectedBeerDTO);
 
-        assertThat(createdBeerDTO.getId(), is(equalTo(expectedBeerDTO.getId())));
+        assertEquals(expectedBeerDTO.getId(), createdBeerDTO.getId());
+        assertEquals(expectedBeerDTO.getName(), createdBeerDTO.getName());
+        /*assertThat(createdBeerDTO.getId(), is(equalTo(expectedBeerDTO.getId())));
         assertThat(createdBeerDTO.getName(), is(equalTo(expectedBeerDTO.getName())));
-        assertThat(createdBeerDTO.getQuantity(), is(equalTo(expectedBeerDTO.getQuantity())));
+        assertThat(createdBeerDTO.getQuantity(), is(equalTo(expectedBeerDTO.getQuantity())));*/
     }
 
     @Test
