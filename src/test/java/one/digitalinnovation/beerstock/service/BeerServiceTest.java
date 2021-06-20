@@ -66,11 +66,14 @@ public class BeerServiceTest {
         //then
         BeerDTO createdBeerDTO = beerService.createBeer(expectedBeerDTO);
 
+        //Teste com Assert do JUnit
         assertEquals(expectedBeerDTO.getId(), createdBeerDTO.getId());
         assertEquals(expectedBeerDTO.getName(), createdBeerDTO.getName());
-        /*assertThat(createdBeerDTO.getId(), is(equalTo(expectedBeerDTO.getId())));
+
+        //Teste usando MatcherAssert.assertThat
+        assertThat(createdBeerDTO.getId(), is(equalTo(expectedBeerDTO.getId())));
         assertThat(createdBeerDTO.getName(), is(equalTo(expectedBeerDTO.getName())));
-        assertThat(createdBeerDTO.getQuantity(), is(equalTo(expectedBeerDTO.getQuantity())));*/
+        assertThat(createdBeerDTO.getQuantity(), is(equalTo(expectedBeerDTO.getQuantity())));
     }
 
     @Test
